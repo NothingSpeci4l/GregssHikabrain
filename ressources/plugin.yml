@@ -1,0 +1,9 @@
+name: GregsHikabrain
+version: 1.0
+author: gregwll
+main: com.gregwll.hikabrain.Main
+commands:
+  matt:
+  gm:
+    description: more short command for gamemode command
+
