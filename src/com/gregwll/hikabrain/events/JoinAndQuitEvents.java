@@ -31,10 +31,10 @@ public class JoinAndQuitEvents implements Listener {
         Bukkit.broadcastMessage("§f[§a+§f] " + player.getName());
 
         player.getInventory().clear();
+        Kits.giveLobbyKit(player);
+        player.setHealth(20);
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(Main.getLocations().getLocationFromName("lobby"));
-
-        Kits.giveLobbyKit(player);
     }
 
     @EventHandler

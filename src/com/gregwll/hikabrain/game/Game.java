@@ -35,8 +35,12 @@ public class Game {
 
         playerBlue.teleport(loc.getLocationFromName("bluespawn"));
         playerBlue.getInventory().clear();
+        playerBlue.setHealth(20);
+        playerBlue.setBedSpawnLocation(loc.getLocationFromName("bluespawn"));
         playerRed.teleport(loc.getLocationFromName("redspawn"));
         playerRed.getInventory().clear();
+        playerRed.setHealth(20);
+        playerRed.setBedSpawnLocation(loc.getLocationFromName("redspawn"));
 
         Kits.giveRedStuff(playerRed);
         Kits.giveBlueStuff(playerBlue);
@@ -54,7 +58,9 @@ public class Game {
             winner.getInventory().clear();
             looser.getInventory().clear();
             winner.teleport(Main.getLocations().getLocationFromName("lobby"));
+            winner.setBedSpawnLocation(loc.getLocationFromName("lobby"));
             looser.teleport(Main.getLocations().getLocationFromName("lobby"));
+            looser.setBedSpawnLocation(loc.getLocationFromName("lobby"));
             Kits.giveLobbyKit(winner);
             Kits.giveLobbyKit(looser);
 

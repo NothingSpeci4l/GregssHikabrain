@@ -1,5 +1,6 @@
 package com.gregwll.hikabrain.game.kits;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -22,6 +23,12 @@ public class Kits {
         metaQueue.setDisplayName("§6§lRejoindre la file d'attente");
         queue.setItemMeta(metaQueue);
 
+        ItemStack air = new ItemStack(Material.AIR, 1);
+
+        player.getInventory().setHelmet(air);
+        player.getInventory().setChestplate(air);
+        player.getInventory().setLeggings(air);
+        player.getInventory().setBoots(air);
         inv.setItem(4, queue);
     }
 
