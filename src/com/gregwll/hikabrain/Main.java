@@ -6,10 +6,16 @@ import com.gregwll.hikabrain.events.*;
 import com.gregwll.hikabrain.game.Queue;
 import com.gregwll.hikabrain.utils.Locations;
 import com.gregwll.hikabrain.utils.Log;
+import net.minecraft.server.v1_8_R3.PacketPlayInClientCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class Main extends JavaPlugin {
 
@@ -32,11 +38,13 @@ public class Main extends JavaPlugin {
         getCommand("matt").setExecutor(new Matt());
         getCommand("gm").setExecutor(new GmCommand());
 
+        Bukkit.getPluginManager().registerEvents(new AntiDSEvents(), this);
         Bukkit.getPluginManager().registerEvents(new JoinAndQuitEvents(), this);
         Bukkit.getPluginManager().registerEvents(new ItemInterractionEvents(), this);
         Bukkit.getPluginManager().registerEvents(new ChatEvents(), this);
         Bukkit.getPluginManager().registerEvents(new KitsEvents(), this);
         Bukkit.getPluginManager().registerEvents(new GameDeathKillEvents(), this);
+        Bukkit.getPluginManager().registerEvents(new SpawnGameProtection(), this);
 
     }
 
