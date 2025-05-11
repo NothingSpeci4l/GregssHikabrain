@@ -1,6 +1,7 @@
 package com.gregwll.hikabrain;
 
 import com.gregwll.hikabrain.commands.Matt;
+import com.gregwll.hikabrain.commands.SpecLeaveCommand;
 import com.gregwll.hikabrain.commands.staff.GmCommand;
 import com.gregwll.hikabrain.events.*;
 import com.gregwll.hikabrain.game.Queue;
@@ -36,6 +37,7 @@ public class Main extends JavaPlugin {
         locations.addLocation("redspawn", new Location(Bukkit.getWorld("world"), -7, 16, -367, -90f, 0f));
 
         getCommand("matt").setExecutor(new Matt());
+        getCommand("specleave").setExecutor(new SpecLeaveCommand());
         getCommand("gm").setExecutor(new GmCommand());
 
         Bukkit.getPluginManager().registerEvents(new AntiDSEvents(), this);

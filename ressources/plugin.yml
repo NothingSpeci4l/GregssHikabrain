@@ -6,4 +6,6 @@ commands:
   matt:
   gm:
     description: more short command for gamemode command
+  specleave:
+    description: permit to leave the spectator mode
 

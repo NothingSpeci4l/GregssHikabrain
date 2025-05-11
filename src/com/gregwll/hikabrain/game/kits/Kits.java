@@ -23,6 +23,11 @@ public class Kits {
         metaQueue.setDisplayName("§6§lRejoindre la file d'attente");
         queue.setItemMeta(metaQueue);
 
+        ItemStack spec = new ItemStack(Material.WEB, 1);
+        ItemMeta metaSpec = spec.getItemMeta();
+        metaSpec.setDisplayName("§6§lMode spectateur");
+        spec.setItemMeta(metaSpec);
+
         ItemStack air = new ItemStack(Material.AIR, 1);
 
         player.getInventory().setHelmet(air);
@@ -30,6 +35,7 @@ public class Kits {
         player.getInventory().setLeggings(air);
         player.getInventory().setBoots(air);
         inv.setItem(4, queue);
+        inv.setItem(0, spec);
     }
 
     public static void giveRedStuff(Player player) {

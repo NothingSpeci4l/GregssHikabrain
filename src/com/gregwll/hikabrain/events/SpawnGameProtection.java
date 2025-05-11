@@ -13,7 +13,9 @@ public class SpawnGameProtection implements Listener {
     @EventHandler
     public void onDrop(PlayerDropItemEvent event) {
         ItemStack currentItem = event.getItemDrop().getItemStack();
-        if(!currentItem.getType().equals(Material.GOLDEN_APPLE)) {event.setCancelled(true);}
+        if(currentItem.getType() != Material.GOLDEN_APPLE) {
+            event.setCancelled(true);
+        }
     }
 
     @EventHandler

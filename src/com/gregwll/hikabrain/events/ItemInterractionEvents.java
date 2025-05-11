@@ -2,6 +2,9 @@ package com.gregwll.hikabrain.events;
 
 import com.gregwll.hikabrain.Main;
 import com.gregwll.hikabrain.game.Queue;
+import com.gregwll.hikabrain.game.Spectator;
+import com.gregwll.hikabrain.utils.IsIG;
+import com.gregwll.hikabrain.utils.IsSpec;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,15 +24,27 @@ public class ItemInterractionEvents implements Listener {
         Player player = event.getPlayer();
         Action currentAction = event.getAction();
 
-        if(currentItem.getType().equals(Material.NETHER_STAR)) {
-            if(currentAction != Action.LEFT_CLICK_AIR && currentAction != Action.LEFT_CLICK_BLOCK) {
+
+        if(currentAction != Action.LEFT_CLICK_AIR && currentAction != Action.LEFT_CLICK_BLOCK) {
+            if(currentItem.getType().equals(Material.NETHER_STAR)) {
                 if(!queue.isInQueue(player)) {
                     queue.addPlayer(player);
                 } else {
                     queue.removePlayer(player);
                 }
+            } else if(currentItem.getType().equals(Material.WEB)) {
+                if(!IsIG.isIg(player.getName())) {
+                    if(!IsSpec.isSpec(player.getName())) {
+                        Spectator.toggleSpectator(player);
+                    } else {
+                        player.sendMessage(Main.getMsgPrefix() + "Vous êtes déjà en spectateur ! ");
+                    }
+                } else {
+                    player.sendMessage(Main.getMsgPrefix() +"Vous ne pouvez pas aller en mode spéctateur durant une partie !");
+                }
             }
         }
+
     }
 
     @EventHandler
